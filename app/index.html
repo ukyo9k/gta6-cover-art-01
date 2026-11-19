@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Coast Cover Studio — GTA-style cover art maker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="masthead">
+  <div>
+    <h1>Neon Coast Cover Studio</h1>
+    <p>Turn your photos into multi-panel sunset cover art — offline, nothing uploaded.</p>
+  </div>
+  <p class="tag">3 steps: load a photo &middot; pick a layout &amp; grade &middot; export a PNG</p>
+</header>
+
+<main class="studio">
+  <section class="preview-pane" aria-label="Cover preview">
+    <canvas id="preview" width="1920" height="1080"></canvas>
+    <p class="hint">Click a panel to select it. Drag a photo to move it, scroll to zoom, or use the sliders.</p>
+    <p id="status" class="status" role="status">Loading…</p>
+  </section>
+
+  <aside class="controls" aria-label="Cover controls">
+    <section>
+      <h2>1 · Photo</h2>
+      <div class="row">
+        <label class="file-button">Load photo
+          <input type="file" id="photo-file" accept="image/*">
+        </label>
+        <button type="button" id="fill-all">Fill all panels</button>
+      </div>
+      <div class="row">
+        <button type="button" id="sample-boulevard">Sample: boulevard</button>
+        <button type="button" id="sample-pier">Sample: pier</button>
+      </div>
+      <p class="note">Photos are read on your machine and never uploaded.</p>
+    </section>
+
+    <section>
+      <h2>2 · Layout</h2>
+      <div class="choice" id="layout-picker"></div>
+      <div class="panel-picker" id="panel-picker">
+        <button type="button" data-index="0">Panel 1</button>
+        <button type="button" data-index="1">Panel 2</button>
+        <button type="button" data-index="2">Panel 3</button>
+        <button type="button" data-index="3">Panel 4</button>
+      </div>
+      <p id="panel-label" class="note">Panel 1 of 4 — empty</p>
+      <label class="slider">Zoom <input type="range" id="zoom" min="1" max="3" step="0.05" value="1"></label>
+      <label class="slider">Pan left–right <input type="range" id="panx" min="-1" max="1" step="0.02" value="0"></label>
+      <label class="slider">Pan up–down <input type="range" id="pany" min="-1" max="1" step="0.02" value="0"></label>
+    </section>
+
+    <section>
+      <h2>3 · Caption</h2>
+      <label class="field">Title
+        <input type="text" id="title" value="NEON COAST" maxlength="24">
+      </label>
+      <label class="field">Subtitle
+        <input type="text" id="subtitle" value="a vice city story" maxlength="48">
+      </label>
+    </section>
+
+    <section>
+      <h2>4 · Colour grade</h2>
+      <div class="choice" id="grade-picker"></div>
+      <div class="toggles">
+        <label><input type="checkbox" id="grain" checked> Grain</label>
+        <label><input type="checkbox" id="vignette" checked> Vignette</label>
+        <label><input type="checkbox" id="halftone"> Halftone</label>
+      </div>
+    </section>
+
+    <section>
+      <h2>5 · Size &amp; export</h2>
+      <div class="choice" id="size-picker"></div>
+      <div class="exports">
+        <button type="button" data-export="square">PNG 1080 × 1080</button>
+        <button type="button" data-export="portrait">PNG 1080 × 1350</button>
+        <button type="button" data-export="landscape">PNG 1920 × 1080</button>
+      </div>
+      <p class="note">The preview is drawn by the same code as the export, so the PNG is exactly what you see.</p>
+    </section>
+  </aside>
+</main>
+
+<footer>
+  <p>Neon Coast Cover Studio — an original offline cover maker. No game logos, artwork or fonts are used; the lettering is drawn with system fonts and the sunset scenes are drawn by hand in code. Sample photos were made with an image model for make.fun and are free to use.</p>
+</footer>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>

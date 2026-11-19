@@ -1,0 +1,148 @@
+/* Neon Coast Cover Studio — editor chrome. System fonts only, warm cream
+   and ink colours to match the poster's own frame. */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  background: #f6e8c8;
+  color: #22102e;
+}
+
+.masthead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  padding: 1rem 1.5rem 0.75rem;
+  background: linear-gradient(100deg, #ff9a3d, #ff5e7a 55%, #7b2f8e);
+  color: #fff8e6;
+  border-bottom: 4px solid #22102e;
+}
+
+.masthead h1 {
+  margin: 0;
+  font-family: "Arial Black", Arial, sans-serif;
+  font-size: 1.7rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-shadow: 2px 3px 0 rgba(34, 16, 46, 0.55);
+}
+
+.masthead p { margin: 0.2rem 0 0; }
+.masthead .tag { font-weight: 600; opacity: 0.95; }
+
+.studio {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 1.25rem;
+  align-items: start;
+  padding: 1.25rem 1.5rem;
+}
+
+.preview-pane { min-width: 0; }
+
+#preview {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 4px solid #22102e;
+  border-radius: 4px;
+  background: #fff8e6;
+  cursor: grab;
+  touch-action: none;
+}
+
+#preview:active { cursor: grabbing; }
+
+.hint, .note { font-size: 0.85rem; color: #5b3a63; }
+.status { font-weight: 600; min-height: 1.2em; }
+
+.controls section {
+  background: #fff8e6;
+  border: 2px solid #22102e;
+  border-radius: 8px;
+  padding: 0.8rem 0.9rem;
+  margin-bottom: 0.9rem;
+}
+
+.controls h2 {
+  margin: 0 0 0.6rem;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem; }
+
+button, .file-button {
+  font: inherit;
+  font-weight: 600;
+  color: #22102e;
+  background: #ffd76a;
+  border: 2px solid #22102e;
+  border-radius: 6px;
+  padding: 0.45rem 0.7rem;
+  cursor: pointer;
+}
+
+button:hover, .file-button:hover { background: #ffb52e; }
+button:disabled { opacity: 0.4; cursor: default; }
+button.active { background: #ff5e7a; color: #fff8e6; }
+
+.file-button input { display: none; }
+
+.choice { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.choice button { padding: 0.4rem 0.55rem; font-size: 0.9rem; }
+
+.panel-picker { display: flex; gap: 0.4rem; margin-top: 0.6rem; }
+.panel-picker button { flex: 1; padding: 0.35rem 0.2rem; font-size: 0.85rem; }
+
+.slider, .field { display: block; font-weight: 600; font-size: 0.9rem; margin-top: 0.5rem; }
+.slider input, .field input { width: 100%; margin-top: 0.25rem; }
+
+.field input {
+  font: inherit;
+  padding: 0.45rem 0.55rem;
+  border: 2px solid #22102e;
+  border-radius: 6px;
+  background: #fffdf4;
+  color: #22102e;
+}
+
+.toggles { display: flex; gap: 1rem; margin-top: 0.6rem; font-weight: 600; font-size: 0.9rem; }
+.toggles input { accent-color: #ff5e7a; }
+
+.exports { display: grid; gap: 0.5rem; }
+.exports button { background: #22102e; color: #fff8e6; }
+.exports button:hover { background: #4a2358; }
+
+footer {
+  padding: 0 1.5rem 1.5rem;
+  font-size: 0.85rem;
+  color: #5b3a63;
+}
+
+/* Screenshot scene: the cover alone, full frame. */
+body.shot-cover { background: #22102e; }
+body.shot-cover .masthead,
+body.shot-cover .controls,
+body.shot-cover footer,
+body.shot-cover .hint,
+body.shot-cover .status { display: none; }
+body.shot-cover .studio { display: block; padding: 0; }
+body.shot-cover .preview-pane { margin: 0; }
+body.shot-cover #preview {
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+  border: 0;
+  border-radius: 0;
+  cursor: default;
+}
+
+@media (max-width: 900px) {
+  .studio { grid-template-columns: 1fr; }
+}
